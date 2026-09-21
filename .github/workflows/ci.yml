@@ -8,6 +8,10 @@ jobs:
   validate:
     runs-on: ubuntu-latest
 
+    env:
+      POSTGRES_PASSWORD: ci-test-password
+      PUBLIC_PORT: 8080
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,30 +31,18 @@ jobs:
           python -m compileall -q app tests validate.py failure_test.py
 
       - name: Validate Docker Compose configuration
-        env:
-          POSTGRES_PASSWORD: ci-test-password
-          PUBLIC_PORT: 8080
         run: |
           docker compose config -q
 
       - name: Build application image
-        env:
-          POSTGRES_PASSWORD: ci-test-password
-          PUBLIC_PORT: 8080
         run: |
           docker compose build
 
       - name: Start application stack
-        env:
-          POSTGRES_PASSWORD: ci-test-password
-          PUBLIC_PORT: 8080
         run: |
           docker compose up -d
 
       - name: Validate running environment
-        env:
-          POSTGRES_PASSWORD: ci-test-password
-          PUBLIC_PORT: 8080
         run: |
           python validate.py
 

@@ -1,0 +1,40 @@
+
+=== FILE COUNTS ===
+access.log: valid=725 malformed=1 duplicates=5
+  interval=2026-08-20T11:00:00.015000+00:00 to 2026-08-20T11:29:57.578000+00:00
+application.log: valid=729 malformed=1 duplicates=2
+  interval=2026-08-20T11:00:00.015000+00:00 to 2026-08-20T11:29:57.578000+00:00
+error.log: valid=67 malformed=0 duplicates=0
+  interval=2026-08-20T11:05:02+00:00 to 2026-08-20T11:26:47+00:00
+
+=== ACCESS STATUS COUNTS ===
+{'200': 620, '404': 10, '502': 40, '503': 47, '504': 8}
+total client responses=725
+5xx responses=95
+5xx error rate=13.10% (denominator=all valid access.log requests)
+
+=== DISTINCT REQUESTS ===
+access request IDs=725
+distinct access request IDs=720
+application request IDs=729
+distinct application request IDs=680
+
+=== FAILURES BY PATH ===
+{'/records': 26, '/counter': 26, '/ready': 23, '/missing': 10, '/health': 10, '/': 10}
+
+=== FAILURES BY UPSTREAM ===
+{'172.23.0.12:8080': 68, '172.23.0.11:8080': 27}
+
+=== FAILURES BY TIME WINDOW ===
+{'2026-08-20T11:05:00+00:00': 8, '2026-08-20T11:06:00+00:00': 8, '2026-08-20T11:07:00+00:00': 8, '2026-08-20T11:08:00+00:00': 8, '2026-08-20T11:09:00+00:00': 8, '2026-08-20T11:12:00+00:00': 8, '2026-08-20T11:13:00+00:00': 7, '2026-08-20T11:14:00+00:00': 8, '2026-08-20T11:15:00+00:00': 8, '2026-08-20T11:20:00+00:00': 8, '2026-08-20T11:21:00+00:00': 8, '2026-08-20T11:25:00+00:00': 4, '2026-08-20T11:26:00+00:00': 4}
+
+=== LATENCY ===
+count=725
+median=54.00 ms
+p95=2001.00 ms
+percentile method=linear interpolation between nearest ranks
+source=access.log request_time seconds
+
+=== UPSTREAM RETRIES ===
+retried request IDs=0
+succeeded after retrying=0

@@ -82,7 +82,7 @@ def main():
     # ------------------------------------------------------------
     print("\n--- Containers ---")
 
-    for name in ["app-01", "app-02","nginx", "postgres", "redis"]:
+    for name in ["app-01", "app-02", "app-03","nginx", "postgres", "redis"]:
         check(
             f"container {name} is running",
             container_running(name),
@@ -117,7 +117,7 @@ def main():
     # ------------------------------------------------------------
     print("\n--- Backend instances ---")
 
-    for container in ["app-01", "app-02"]:
+    for container in ["app-01", "app-02", "app-03"]:
         rc, out, err = run(
             [
                 "docker",
@@ -209,7 +209,7 @@ def main():
         nginx_ports,
     )
 
-    for container in ["app-01", "app-02","postgres", "redis"]:
+    for container in ["app-01", "app-02", "app-03", "postgres", "redis"]:
         ports = port_map.get(container, "")
         has_host_mapping = "->" in ports
 
